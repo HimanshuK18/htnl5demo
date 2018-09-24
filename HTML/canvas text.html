@@ -1,0 +1,64 @@
+﻿
+<!DOCTYPE html>
+<html>
+<body>
+    <style>
+       
+    </style>
+    <div style="top:500px;padding-left:100px;">
+        <canvas id="myCanvas" width="700" height="200" style="border:2px solid #000000;top:200px;left:100px;">Your browser does not support the HTML5 canvas tag.</canvas>
+    </div>
+    <div id="newput" style="padding-top:50px;padding-left:100px;"></div>
+    <br />
+    <input type="button" onclick="DoThis()" value="Click" />
+    <script>
+        draw();
+        function DoThis()
+        {
+            var c = document.getElementById("myCanvas");
+            var context = c.getContext("2d");
+            context.canvas.width = 500;
+            context.canvas.height = 200;
+            draw();
+        }
+        function draw() {
+            var c = document.getElementById("myCanvas");
+            var context = c.getContext("2d");
+
+            // set both the strokeStyle and the fillStyle to black
+            context.strokeStyle = 'black';
+            context.fillStyle = 'black';
+            // first line of text in the default font:
+            context.strokeText(context.font, 10, 20);
+            context.fillText(context.font, 350, 20);
+            // second line of text:
+            context.font = '20px fantasy';
+            context.strokeText(context.font, 10, 40);
+            context.fillText(context.font, 350, 40);
+            // third line of text:
+            context.font = '40px Verdan';
+            context.strokeText(context.font, 10, 80);
+            context.fillText(context.font, 350, 80);
+            // fourth line of text:
+            context.font = '60px Arial';
+            context.strokeText(context.font, 10, 140);
+
+            context.fillText(context.font, 350, 140);
+
+            var canvas = document.createElement('canvas');
+            canvas.id = "canvas1";
+            canvas.width = 600;
+            canvas.height = 200;
+            var context = canvas.getContext("2d");
+            context.fillStyle = 'black';
+            context.font = "40px Verdan";
+            context.fillText('this is dynamic text for canvas', 40, 40);
+            document.getElementById("newput").appendChild(canvas);
+        }
+    </script>
+
+    <p>
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        var count;
+        function incrementToken()
+        {
+            if (localStorage.length == 0) {
+                count = 1;
+                var token = count;
+                $('#lblToken')[0].innerText = token;
+            }
+            else {
+                count = localStorage.length + 1;
+                var token = count;
+                $('#lblToken')[0].innerText = token;
+            }
+        }
+        $(document).ready(function () {
+            incrementToken();
+        });
+        function AddItem()
+        {
+            var visitor = new Object();
+            visitor.Name = $('#txtName').val();
+            visitor.Contact = $('#txtContact').val();
+            window.localStorage.setItem(count, JSON.stringify(visitor));
+            window.sessionStorage.setItem(count, JSON.stringify(visitor));
+            incrementToken();
+            $('#txtName').val('');
+            $('#txtContact').val('');
+        }
+    </script>
+    <h2>Local Storage</h2>
+    <fieldset>
+        <legend>Visitor Info</legend>
+        <table style="border:solid;border-width:2px;">
+            <tr>
+                <td>Token:</td>
+                <td><label id="lblToken"></label></td></tr>
+            <tr>
+                <td>Visitor Name:</td>
+                <td><input type="text" id="txtName"/></td></tr>
+            <tr>
+                <td>Contact No.</td>
+                <td><input type="text" id="txtContact" /></td>
+            </tr>
+            <tr>
+                
+                <td><input onclick="AddItem();" type="button" id="btnInfo" value="Add Info" /></td>
+            </tr>
+        </table>
+    </fieldset>
+   
+
+</body>
+</html>

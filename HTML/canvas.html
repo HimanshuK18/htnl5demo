@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <canvas id="myCanvas">Your browser does not support the HTML5 canvas tag.</canvas>
+    <br />
+    
+    <canvas id="myCanvas1">Your browser does not support the HTML5 canvas tag.</canvas>
+    <br />
+
+    <canvas id="myCanvas2">Your browser does not support the HTML5 canvas tag.</canvas>
+    
+    
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = 'red';
+        ctx.beginPath();
+        ctx.moveTo(10, 30);
+        ctx.bezierCurveTo(50, 90, 159, -30, 200, 30);
+        ctx.lineTo(200, 90);
+        ctx.lineTo(10, 90);
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 4;
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = "black";
+        ctx.strokeStyle = 'black';
+        ctx.stroke();
+
+
+
+        var c1 = document.getElementById("myCanvas1");
+        var ctx1 = c1.getContext("2d");
+        ctx1.font = "20px Georgia";
+        ctx1.fillText("Hello World!", 10, 50);
+        ctx1.font = "30px Verdana";
+        var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+        gradient.addColorStop("0", "magenta");
+        gradient.addColorStop("0.5", "blue");
+        gradient.addColorStop("1.0", "red");
+        ctx1.fillStyle = gradient;
+        ctx1.fillText("Big smile!", 10, 90);
+
+
+        var c2 = document.getElementById("myCanvas2");
+        var ctx2 = c2.getContext("2d");
+        var imgData = ctx2.createImageData(100, 100);
+        for (var i = 0; i < imgData.data.length; i += 4) {
+            imgData.data[i + 0] = 255;
+            imgData.data[i + 1] = 100;
+            imgData.data[i + 2] = 100;
+            imgData.data[i + 3] = 255;
+        }
+        ctx2.putImageData(imgData, 10, 10);
+    </script>
+
+    <p>
+    </p>
+
+</body>
+</html>

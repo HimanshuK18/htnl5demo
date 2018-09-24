@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+<h1>New HTML 5</h1>
+    <form>
+        User Name <input id="txtName" type="text" placeholder="User Name" autofocus pattern="[a-zA-Z0-9_-]" title="Enter a name" />
+        <br />
+        EMail<input id="txtEmail" type="email" placeholder="Email" autocomplete="on" title="Enter Email" oninvalid="OnInvalidEmail()" required />
+        <span id="missingemail" class="invalid">Email Missing</span>
+        <span id="invalidEmail" class="invalid">Invalid Email </span>
+        <br />
+        Age <input type="number" id="txtAge" placeholder="Age 18-60" min="18" max="60" style="width:75px;" />
+        <br />
+        <input type="submit" value="Submit" />
+        <br />
+        <input type="color"  />
+        <br />
+        <input type="date" />
+        <br />
+        <input type="reset"  />
+        <br />
+        <input type="image" />
+        <br />
+        <input type="week" />
+        <br />
+        <input type="time" />
+        <br />
+        <input type="search" />
+        <br />
+        <p>Click the button to get the computed background color for the test div.</p>
+        <p><button onclick="myFunction()">Try it</button></p>
+        <div id="test" style="height: 50px;background-color: lightblue;">Test Div</div>
+        <p>The computed background color for the test div is: <span id="demo"></span></p>
+
+        <script>
+            function myFunction() {
+                var elem = document.getElementById("test");
+                var theCSSprop = window.getComputedStyle(elem, null);
+                document.getElementById("demo").innerHTML = theCSSprop;
+            }
+        </script>
+    </form>
+    <script>
+        function OnInvalidEmail()
+        {
+            event.preventDefault();
+            var element = event.srcElement;
+            var validity = element.validity;
+            if (validity.valueMissing)
+            {
+                $("#missingemail").show();
+                $("#invalidEmail").hide();
+            }
+            else if (validity.typeMismatch)
+            {
+                $("#missingemail").hide();
+                $("#invalidEmail").show();
+            }
+        }
+    </script>
+    <style>
+        .invalid {
+        display:none;}
+    </style>
+</body>
+</html>

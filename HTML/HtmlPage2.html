@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script src="../Scripts/jquery-1.10.2.min.js"></script>
+<body>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'http://localhost:65181/api/deliverable/',
+                type: 'GET',
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                success: ShowData
+            });
+            function ShowData(data, textStatus, jqXHR) {
+                var data = data;
+                $('#DList').empty();
+                for (var i = 0; i <= data.length-1; i++)
+                {
+                    $('#DList').append("<option value='" + data[i].Deliverable_Name + "'/>");
+                }
+            }
+        });
+    </script>
+    <input type="text" list="DList" />
+    <datalist value="State Names" id="DList">
+    </datalist>
+</body>
+</html>

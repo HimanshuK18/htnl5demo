@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#maplink').hide();
+            var maplink = $('#maplink');
+            $('#btnlocation').click(function () {
+                var options = {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 1000
+                };
+                navigator.geolocation.getCurrentPosition(ShowPosition, PositionError, options);
+            });
+            function ShowPosition(result)
+            {
+                var cords = result.coords;
+                $('#lat').val(cords.latitude);
+                $('#long').val(cords.longitude);
+                $('#acc').val(cords.accuracy);
+
+                maplink.attr("href", "http://maps.google.com/maps?q=" + cords.latitude + ",+" + cords.longitude);
+                maplink.show();
+            }
+        });
+    </script>
+    <input type="button" value="Get Location" id="btnlocation"/>    
+    <a href="" id="maplink" target="_blank">View Map</a>
+
+    <br /><br />
+    <label for="lat">Latitude</label>
+    <input type="text" id="lat" />
+    <br /><br />
+    <label for="lag">Longitude</label>
+    <input type="text" id="long" />
+    <br /><br />
+    <label for="acc">Accuracy</label>
+    <input type="text" id="acc" />
+
+    <br /><br />
+    <ul id="log"></ul>
+
+</body>
+</html>

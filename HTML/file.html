@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+
+<body>
+    <script src="../Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        function handleFiles(file)
+        {
+            var filedisplay = $('#pret');
+            var texttype = /text.*/;
+            if (file[0].type.match(texttype))
+            {
+                var reader = new FileReader();
+                reader.readAsText(file[0]);
+                reader.onload = function (e) {
+                    filedisplay[0].innerText = reader.result;
+                }
+            }
+        }
+    </script>
+    <h2>FILE API</h2>
+    <fieldset>
+        <legend>Visitor Info</legend>
+        <table style="border:solid;border-width:2px;">
+            <tr>
+                <td>Choose a file</td>
+                <td><input type="file" id="fileo" onchange="handleFiles(this.files)" /></td></tr>
+        </table>
+
+    </fieldset>
+   <pre id="pret"></pre>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <canvas id="myCanvas" width="500" height="500">Your browser does not support the HTML5 canvas tag.</canvas>
+    <canvas id="myCanvas1" style="top:50px;left:600px;">Your browser does not support the HTML5 canvas tag.</canvas>
+    <br />
+    <script>
+        var data = [16, 68, 20, 30, 54];
+        var canvas = document.getElementById('myCanvas');
+
+        //get a reference to the drawing context 
+        var c = canvas.getContext('2d');
+
+        //draw 
+        c.fillStyle = "gray";
+        c.fillRect(0, 0, 500, 500);
+
+        c.fillStyle = "blue";
+        for (var i = 0; i < data.length; i++) {
+            var dp = data[i];
+            c.fillRect(25 + i * 100, 500 - dp * 5 - 30, 50, dp * 5);
+        }
+
+        //draw axis lines 
+        c.fillStyle = "black";
+        c.lineWidth = 2.0;
+        c.beginPath();
+        c.moveTo(30, 10);
+        c.lineTo(30, 460);
+        c.lineTo(490, 460);
+        c.stroke();
+
+        var labels = ["JAN", "FEB", "MAR", "APR", "MAY"];
+        //draw horiz text 
+        for (var i = 0; i < 5; i++) {
+            c.fillText(labels[i], 50 + i * 100, 475);
+        }
+
+
+
+        var ctx1 = document.getElementById('myCanvas1').getContext('2d');
+
+        ctx1.fillRect(0, 0, 150, 150);   // Draw a rectangle with default settings
+        ctx1.save();                  // Save the default state
+
+        ctx1.fillStyle = '#09F';      // Make changes to the settings
+        ctx1.fillRect(15, 15, 120, 120); // Draw a rectangle with new settings
+        ctx1.save();                  // Save the current state
+
+        ctx1.fillStyle = '#FFF';      // Make changes to the settings
+        ctx1.globalAlpha = 0.5;
+        ctx1.fillRect(30, 30, 90, 90);   // Draw a rectangle with new settings
+
+        ctx1.restore();               // Restore previous state
+        ctx1.fillRect(45, 45, 60, 60);   // Draw a rectangle with restored settings
+
+        ctx1.restore();               // Restore original state
+        ctx1.fillRect(60, 60, 30, 30);
+    </script>
+
+    <p>
+    </p>
+
+</body>
+</html>
